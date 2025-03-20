@@ -2,12 +2,13 @@
 ///#include <cstdio>
 
 void getCofactor(float a[MAX][MAX], float temp[MAX][MAX], int p, int q, int n) {
-    // Copying the elements of the matrix A to the temporary matrix temp to form the fofactor matrix
+    // Copying the elements of the matrix A to the temporary matrix temp to form the cofactor matrix
     int i = 0, j = 0;
     for (int row = 0; row < n; row++) {
         for (int col = 0; col < n; col++) {
             if (row != p && col != q) {
                 temp[i][j++] = a[row][col];
+                // If the row is filled, move to the next row
                 if (j == n - 1) {
                     j = 0;
                     i++;
