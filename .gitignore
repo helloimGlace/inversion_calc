@@ -32,13 +32,13 @@
 *.app
 
 # Debug and IDE files/directories
-CMakeFiles/
-.idea/
-.vs/
-.vscode/
-cmake-build-debug/
+/CMakeFiles/
+/.idea/
+/.vs/
+/.vscode/
 CMakeLists.txt.user
 CMakeCache.txt
 _deps
 CMakeUserPresets.json
 main2.temp
+/cmake-build-debug/
