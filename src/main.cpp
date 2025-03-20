@@ -14,6 +14,10 @@ int main() {
         }
     }
 
+    if (n == 1) {
+        std::cout << a[0][0] << std::endl;
+        return 0;
+    }
     if (inverse(a, inv, n)) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
