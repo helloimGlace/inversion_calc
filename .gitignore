@@ -36,4 +36,5 @@ CMakeFiles/
 .idea/
 .vs/
 .vscode/
+cmake-build-debug/
 main2.temp
