@@ -6,7 +6,7 @@ set(INCLUDE ./src/class)
 
 include_directories(${INCLUDE})
 
-add_executable(MAE_B11 main2.temp
+add_executable(MAE_B11
         src/main.cpp
-        src/class/matrix.h
-        src/class/matrix.cpp)
+        src/class/sqrMatrix.h
+        src/class/sqrMatrix.cpp)

@@ -1,30 +1,21 @@
 #include <iostream>
-#include <cstdio>
-#include "matrix.h"
+#include "sqrMatrix.h"
 
 int main() {
     int n;
-    float a[MAX][MAX], inv[MAX][MAX];
 
     std::cin >> n;
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            std::cin >> a[i][j];
-        }
-    }
+    SqrMatrix a(n), inv(n);
+
+    a.input();
 
     if (n == 1) {
-        std::cout << a[0][0] << std::endl;
+        std::cout << a.data[0][0] << std::endl;
         return 0;
     }
-    if (inverse(a, inv, n)) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                printf("%6.2f", inv[i][j]);
-            }
-            std::cout << std::endl;
-        }
+    if (a.inverse(inv)) {
+        inv.display();
     } else {
         std::cout << "No solution" << std::endl;
     }

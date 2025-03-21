@@ -40,5 +40,4 @@ CMakeLists.txt.user
 CMakeCache.txt
 _deps
 CMakeUserPresets.json
-main2.temp
 /cmake-build-debug/
