@@ -10,11 +10,11 @@ public:
     void display() const;
 
     std::vector<std::vector<float>> data;
+
     void adjugate(SqrMatrix &adj) const;
     bool inverse(SqrMatrix &inv) const;
 
-private:
-    int n;
+    int size;
 };
 
 void getCofactor(const SqrMatrix &mat, SqrMatrix &temp, int p, int q, int size);

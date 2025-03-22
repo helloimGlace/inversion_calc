@@ -2,21 +2,21 @@
 #include "sqrMatrix.h"
 
 int main() {
-    int n;
+    int size;
 
-    std::cin >> n;
+    std::cin >> size;
 
-    SqrMatrix a(n), inv(n);
+    SqrMatrix a(size), inv(size);
 
     a.input();
 
-    if (n == 1) {
+    if (size == 1) {
         std::cout << a.data[0][0] << std::endl;
         return 0;
     }
     if (a.inverse(inv)) {
         inv.display();
     } else {
-        std::cout << "No solution" << std::endl;
+        std::cout << "The matrix is not invertible" << std::endl;
     }
 }

@@ -3,19 +3,19 @@
 #include <cstdio>
 #include <vector>
 
-SqrMatrix::SqrMatrix(int size): data(size, std::vector<float>(size)), n(size) {}
+SqrMatrix::SqrMatrix(int size): data(size, std::vector<float>(size)), size(size) {}
 
 void SqrMatrix::input() const {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             scanf("%f", &data[i][j]);
         }
     }
 }
 
 void SqrMatrix::display() const {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             printf("%6.2f", data[i][j]);
         }
         printf("\n");
@@ -27,38 +27,40 @@ void SqrMatrix::adjugate(SqrMatrix &adj) const {
     // to calculate the adjugate of a square matrix
 
     // Base case: if the matrix is 1x1, the adjugate is 1
-    if (n == 1) {
+    if (size == 1) {
         adj.data[0][0] = 1;
         return;
     }
 
-    SqrMatrix temp(n);
+    SqrMatrix temp(size);
     int sign = 1;
 
     // Iterate through each element of the matrix
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             // Get the cofactor of mat[i][j]
-            getCofactor(*this, temp, i, j, n);
+            getCofactor(*this, temp, i, j, size);
             sign = (i + j) % 2 == 0 ? 1 : -1;
             // Calculate the determinant of the sub-matrix
             // and assign it to the adjugate matrix
-            adj.data[j][i] = static_cast<float>(sign) * determinant(temp, n - 1);
+            adj.data[j][i] = static_cast<float>(sign) * determinant(temp, size - 1);
         }
     }
 }
 
 bool SqrMatrix::inverse(SqrMatrix &inv) const {
-    float det = determinant(*this, n);
+    // Using the formula A^-1 = adj(A) / det(A) to calculate the inverse of a square matrix
+    float det = determinant(*this, size);
     if (det == 0) {
+        // If the determinant is 0, the matrix is not invertible
         return false;
     }
 
-    SqrMatrix adj(n);
+    SqrMatrix adj(size);
     adjugate(adj);
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             inv.data[i][j] = adj.data[i][j] / det;
         }
     }
