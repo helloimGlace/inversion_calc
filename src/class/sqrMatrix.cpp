@@ -39,7 +39,7 @@ void SqrMatrix::adjugate(SqrMatrix &adj) const {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             // Get the cofactor of mat[i][j]
-            getCofactor(*this, temp, i, j, size);
+            getMinor(*this, temp, i, j, size);
             sign = (i + j) % 2 == 0 ? 1 : -1;
             // Calculate the determinant of the sub-matrix
             // and assign it to the adjugate matrix
@@ -83,7 +83,7 @@ float determinant(const SqrMatrix &mat, int size) { // NOLINT(*-no-recursion)
     // Iterate through the first row of the matrix
     for (int k = 0; k < size; k++) {
         // Get the cofactor of a[0][f]
-        getCofactor(mat, temp, 0, k, size);
+        getMinor(mat, temp, 0, k, size);
         // Calculate the determinant of the sub-matrix
         det += static_cast<float>(sign) * mat.data[0][k] * determinant(temp, size - 1);
         sign = -sign;
@@ -92,8 +92,8 @@ float determinant(const SqrMatrix &mat, int size) { // NOLINT(*-no-recursion)
     return det;
 }
 
-void getCofactor(const SqrMatrix &mat, SqrMatrix &temp, int p, int q, int size) {
-    // Copying the elements of the matrix A to the temporary matrix temp to form the cofactor matrix
+void getMinor(const SqrMatrix &mat, SqrMatrix &temp, int p, int q, int size) {
+    // Copying the elements of the matrix A to the temporary matrix temp to form the minor matrix
     int i = 0, j = 0;
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {

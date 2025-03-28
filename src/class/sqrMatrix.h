@@ -17,7 +17,7 @@ public:
     int size;
 };
 
-void getCofactor(const SqrMatrix &mat, SqrMatrix &temp, int p, int q, int size);
+void getMinor(const SqrMatrix &mat, SqrMatrix &temp, int p, int q, int size);
 float determinant(const SqrMatrix &mat, int size);
 
 #endif //SQRMATRIX_H
